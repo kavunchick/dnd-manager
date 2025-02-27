@@ -1,0 +1,44 @@
+package com.dndmanager.domain
+
+import io.quarkus.hibernate.orm.panache.kotlin.PanacheCompanion
+import io.quarkus.hibernate.orm.panache.kotlin.PanacheEntity
+import jakarta.persistence.*
+
+@Entity
+data class Npc (
+
+    @Column(nullable = false)
+    var name: String,
+
+    @Column(nullable = false)
+    var description: String,
+
+    @Column(nullable = false)
+    var health: Short,
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(nullable = false)
+    var alignment: Alignment,
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(nullable = false)
+    var classField: Class,
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(nullable = false)
+    var race: Race,
+
+    @Column(nullable = false)
+    var isHostile: Boolean,
+
+    @Column(nullable = false)
+    var role: String,
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "location_id")
+    var location: Location? = null
+) : PanacheEntity() {
+
+    companion object : PanacheCompanion<Npc>
+
+}
