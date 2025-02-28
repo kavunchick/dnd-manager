@@ -9,7 +9,7 @@ data class Npc (
     @Column(nullable = false)
     var name: String,
 
-    @Column(nullable = false)
+    @Column(columnDefinition = "TEXT", nullable = false)
     var description: String,
 
     @Column(nullable = false)

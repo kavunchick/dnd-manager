@@ -14,6 +14,7 @@ data class Location (
     @Column(nullable = false)
     var name: String,
 
+    @Column(columnDefinition = "TEXT")
     var description: String?
 ) : BaseEntity() {
 

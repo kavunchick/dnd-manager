@@ -3,6 +3,7 @@ package com.dndmanager.domain
 import io.quarkus.hibernate.orm.panache.kotlin.PanacheCompanion
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
+import jakarta.persistence.Lob
 import jakarta.persistence.Table
 
 @Entity
@@ -12,8 +13,8 @@ data class Equipment(
     @Column(nullable = false)
     var name: String,
 
-    @Column(nullable = false)
-    var description: String,
+    @Column(columnDefinition = "TEXT")
+    var description: String?,
 
     @Column(nullable = false)
     var suggestedPriceGp: Short,

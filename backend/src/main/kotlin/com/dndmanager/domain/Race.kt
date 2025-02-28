@@ -1,5 +1,6 @@
 package com.dndmanager.domain
 
+import com.dndmanager.domain.helper.Size
 import io.quarkus.hibernate.orm.panache.kotlin.PanacheCompanion
 import jakarta.persistence.*
 
@@ -12,12 +13,11 @@ data class Race (
 
     var description: String?,
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(nullable = false)
-    var type: CreatureType,
+    @Column(nullable = false)
+    var size: Size,
 
     @Column(nullable = false)
-    var size: Short,
+    var speed: Short,
 ) : BaseEntity() {
 
     companion object : PanacheCompanion<Race>

@@ -12,6 +12,7 @@ data class Trait (
     @Column(nullable = false)
     var name: String,
 
+    @Column(columnDefinition = "TEXT")
     var description: String?,
 ) : BaseEntity() {
 
