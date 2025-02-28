@@ -1,7 +1,6 @@
 package com.dndmanager.domain
 
 import io.quarkus.hibernate.orm.panache.kotlin.PanacheCompanion
-import io.quarkus.hibernate.orm.panache.kotlin.PanacheEntity
 import jakarta.persistence.*
 
 @Entity
@@ -35,7 +34,7 @@ data class SessionsCharacter (
 
     @Column(nullable = false)
     var health: Short,
-) : PanacheEntity()  {
+) : BaseEntity()  {
 
     companion object : PanacheCompanion<SessionsCharacter>
 

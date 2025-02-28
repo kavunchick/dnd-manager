@@ -1,7 +1,6 @@
 package com.dndmanager.domain
 
 import io.quarkus.hibernate.orm.panache.kotlin.PanacheCompanion
-import io.quarkus.hibernate.orm.panache.kotlin.PanacheEntity
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.Table
@@ -18,7 +17,7 @@ data class Session (
     var start: Instant,
 
     var lastUpdated: Instant?
-) : PanacheEntity() {
+) : BaseEntity() {
 
     companion object : PanacheCompanion<Session>
 

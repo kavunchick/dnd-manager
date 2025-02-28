@@ -1,7 +1,6 @@
 package com.dndmanager.domain
 
 import io.quarkus.hibernate.orm.panache.kotlin.PanacheCompanion
-import io.quarkus.hibernate.orm.panache.kotlin.PanacheEntity
 import jakarta.persistence.*
 
 @Entity
@@ -37,7 +36,7 @@ data class Npc (
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "location_id")
     var location: Location? = null
-) : PanacheEntity() {
+) : BaseEntity() {
 
     companion object : PanacheCompanion<Npc>
 

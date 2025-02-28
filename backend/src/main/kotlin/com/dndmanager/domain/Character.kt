@@ -1,13 +1,7 @@
 package com.dndmanager.domain
 
 import io.quarkus.hibernate.orm.panache.kotlin.PanacheCompanion
-import io.quarkus.hibernate.orm.panache.kotlin.PanacheEntity
-import jakarta.persistence.Entity
-import jakarta.persistence.Table
-import jakarta.persistence.Column
-import jakarta.persistence.ManyToOne
-import jakarta.persistence.FetchType
-import jakarta.persistence.JoinColumn
+import jakarta.persistence.*
 
 @Entity
 @Table(name = "characters")
@@ -41,7 +35,7 @@ data class Character(
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(nullable = false)
     var abilityBonus: RaceAbilityBonus
-) : PanacheEntity() {
+) : BaseEntity() {
 
     companion object : PanacheCompanion<Character>
 

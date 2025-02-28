@@ -1,12 +1,7 @@
 package com.dndmanager.domain
 
 import io.quarkus.hibernate.orm.panache.kotlin.PanacheCompanion
-import io.quarkus.hibernate.orm.panache.kotlin.PanacheEntity
-import jakarta.persistence.Entity
-import jakarta.persistence.Column
-import jakarta.persistence.ManyToOne
-import jakarta.persistence.FetchType
-import jakarta.persistence.JoinColumn
+import jakarta.persistence.*
 
 @Entity
 data class RaceAbilityBonus(
@@ -21,7 +16,7 @@ data class RaceAbilityBonus(
 
     @Column(nullable = false)
     var bonus: Short
-) : PanacheEntity() {
+) : BaseEntity() {
 
     companion object : PanacheCompanion<RaceAbilityBonus>
 

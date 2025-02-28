@@ -1,7 +1,6 @@
 package com.dndmanager.domain
 
 import io.quarkus.hibernate.orm.panache.kotlin.PanacheCompanion
-import io.quarkus.hibernate.orm.panache.kotlin.PanacheEntity
 import jakarta.persistence.*
 
 @Entity
@@ -16,7 +15,7 @@ data class Location (
     var name: String,
 
     var description: String?
-) : PanacheEntity() {
+) : BaseEntity() {
 
     companion object : PanacheCompanion<Location>
 

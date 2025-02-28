@@ -1,8 +1,8 @@
 package com.dndmanager.domain
 
 import io.quarkus.hibernate.orm.panache.kotlin.PanacheCompanion
-import io.quarkus.hibernate.orm.panache.kotlin.PanacheEntity
-import jakarta.persistence.*
+import jakarta.persistence.Column
+import jakarta.persistence.Entity
 
 @Entity
 data class Money (
@@ -24,7 +24,7 @@ data class Money (
 
     @Column(nullable = false)
     var exchangeRatePp: Double,
-) : PanacheEntity() {
+) : BaseEntity() {
 
     companion object : PanacheCompanion<Money>
 
