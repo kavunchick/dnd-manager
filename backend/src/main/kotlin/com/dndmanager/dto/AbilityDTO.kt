@@ -4,6 +4,6 @@ data class AbilityCreateDTO(val name: String, val description: String?) : BaseCr
 
 data class AbilityGetDTO(val id: Long, val name: String, val description: String?) : BaseGetDTO()
 
-data class AbilityFindDTO(val id: Long, val name: String, val description: String?) : BaseFindDTO()
+data class AbilityFindDTO(val id: Long, val name: String) : BaseFindDTO()
 
 data class AbilityUpdateDTO(val name: String?, val description: String?) : BaseUpdateDTO()
