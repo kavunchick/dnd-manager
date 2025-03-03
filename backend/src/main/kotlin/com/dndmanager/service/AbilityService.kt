@@ -34,8 +34,8 @@ class AbilityService(override val converter: ConverterService = ConverterService
     }
 
     override fun getAll(): List<AbilityFindDTO> {
-        val abilities = Ability.findAll()
-        return converter.toFindDTO(abilities.list())
+        val abilities = Ability.listAll()
+        return abilities.map { converter.toFindDTO(it) }
     }
 
     @Transactional
