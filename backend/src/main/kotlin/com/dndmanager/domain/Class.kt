@@ -13,7 +13,7 @@ data class Class(
 
     var description: String?,
 
-    @Column(nullable = false)
+    @Column(name = "hit_point_die", nullable = false)
     var hitPointDie: Short
 ) : BaseEntity() {
 

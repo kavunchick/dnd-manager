@@ -4,6 +4,7 @@ import io.quarkus.hibernate.orm.panache.kotlin.PanacheCompanion
 import jakarta.persistence.*
 
 @Entity
+@Table(name = "character_inventory")
 data class CharacterInventory(
 
     @Column(nullable = false)

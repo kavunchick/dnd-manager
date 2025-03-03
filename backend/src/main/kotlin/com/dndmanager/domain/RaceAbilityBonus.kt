@@ -4,6 +4,7 @@ import io.quarkus.hibernate.orm.panache.kotlin.PanacheCompanion
 import jakarta.persistence.*
 
 @Entity
+@Table(name = "race_ability_bonus")
 data class RaceAbilityBonus(
 
     @ManyToOne(fetch = FetchType.LAZY)

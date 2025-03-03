@@ -16,7 +16,7 @@ data class Equipment(
     @Column(columnDefinition = "TEXT")
     var description: String?,
 
-    @Column(nullable = false)
+    @Column(name = "suggested_price_gp", nullable = false)
     var suggestedPriceGp: Short,
 
     @Column(nullable = false)

@@ -19,12 +19,13 @@ data class Character(
 
     var flaws: String?,
 
+    @Column(name = "personality_traits")
     var personalityTraits: String?,
 
     var alignment: Alignment,
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(nullable = false)
+    @JoinColumn(name = "character_class", nullable = false)
     var characterClass: Class,
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -32,7 +33,7 @@ data class Character(
     var race: Race,
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(nullable = false)
+    @JoinColumn(name = "ability_bonus", nullable = false)
     var abilityBonus: RaceAbilityBonus
 ) : BaseEntity() {
 

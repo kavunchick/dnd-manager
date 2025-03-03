@@ -14,6 +14,7 @@ data class Session(
     @Column(nullable = false)
     var start: Instant,
 
+    @Column(name = "last_updated")
     var lastUpdated: Instant?,
 
     @OneToMany(fetch = FetchType.LAZY)

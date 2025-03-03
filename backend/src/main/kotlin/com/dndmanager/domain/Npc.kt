@@ -19,7 +19,7 @@ data class Npc (
     var alignment: Alignment,
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(nullable = false)
+    @JoinColumn(name = "class_id", nullable = false)
     var classField: Class,
 
     @ManyToOne(fetch = FetchType.LAZY)

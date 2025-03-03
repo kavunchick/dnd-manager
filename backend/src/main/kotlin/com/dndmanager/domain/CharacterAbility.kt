@@ -14,7 +14,7 @@ data class CharacterAbility(
     @JoinColumn(nullable = false)
     var ability: Ability,
 
-    @Column(nullable = false)
+    @Column(name = "session_character_id", nullable = false)
     var sessionCharacterId: Long,
 ) : BaseEntity() {
 
