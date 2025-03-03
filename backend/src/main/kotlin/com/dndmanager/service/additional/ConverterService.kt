@@ -32,7 +32,7 @@ class ConverterService {
 
     fun toGetDTO(character: Character): CharacterGetDTO = character.run {
         CharacterGetDTO(
-            name, background, ideals, bonds, flaws, personalityTraits, alignment,
+            id ?: 0, name, background, ideals, bonds, flaws, personalityTraits, alignment,
             toFindDTO(characterClass), toFindDTO(race), toFindDTO(abilityBonus)
         )
     }
@@ -45,7 +45,7 @@ class ConverterService {
         session.run { SessionFindDTO(id ?: 0, name, characters.map { toFindDTO(it.character) }) }
 
     fun toFindDTO(character: Character): CharacterFindDTO =
-        character.run { CharacterFindDTO(name, toFindDTO(characterClass), toFindDTO(race)) }
+        character.run { CharacterFindDTO(id ?: 0, name, toFindDTO(characterClass), toFindDTO(race)) }
 
     fun toFindDTO(abilityBonus: RaceAbilityBonus): RaceAbilityBonusFindDTO =
         abilityBonus.run { RaceAbilityBonusFindDTO(id ?: 0, race.id ?: 0, ability.id ?: 0) }
@@ -77,6 +77,6 @@ class ConverterService {
     }
 
     fun merge(session: Session, sessionDto: SessionUpdateDTO): Session = session.run {
-        Session (sessionDto.name ?: name, session.start, Instant.now(), characters)
+        Session (sessionDto.name, session.start, Instant.now(), characters)
     }
 }

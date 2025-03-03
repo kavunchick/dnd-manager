@@ -29,12 +29,14 @@ data class CharacterUpdateDTO(
 ) : BaseUpdateDTO()
 
 data class CharacterFindDTO(
+    val id: Long,
     val name: String,
     val characterClass: ClassFindDTO,
     val characterRace: RaceFindDTO,
 ) : BaseFindDTO()
 
 data class CharacterGetDTO(
+    val id: Long,
     val name: String,
     val background: String?,
     val ideals: String?,
