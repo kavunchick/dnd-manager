@@ -1,5 +1,6 @@
 package com.dndmanager.domain
 
+import com.dndmanager.domain.helper.Alignment
 import io.quarkus.hibernate.orm.panache.kotlin.PanacheCompanion
 import jakarta.persistence.*
 
@@ -15,8 +16,6 @@ data class Npc (
     @Column(nullable = false)
     var health: Short,
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(nullable = false)
     var alignment: Alignment,
 
     @ManyToOne(fetch = FetchType.LAZY)
