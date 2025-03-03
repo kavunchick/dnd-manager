@@ -23,8 +23,9 @@ class AbilityService(override val converter: ConverterService = ConverterService
 
     @Transactional
     override fun update(id: Long, dto: AbilityUpdateDTO): AbilityGetDTO {
-        val ability = Ability.findById(id) ?: throw NotFoundException()
-        converter.merge(ability, dto).persistAndFlush()
+        var ability = Ability.findById(id) ?: throw NotFoundException()
+        ability = converter.merge(ability, dto)
+        ability.persistAndFlush()
         return converter.toGetDTO(ability)
     }
 

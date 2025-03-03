@@ -43,9 +43,9 @@ class CharacterService(override val converter: ConverterService = ConverterServi
 
     @Transactional
     override fun update(id: Long, dto: CharacterUpdateDTO): CharacterGetDTO {
-        val character = Character.findById(id) ?: throw NotFoundException()
-        val updatedCharacter = converter.merge(character, dto)
-        updatedCharacter.persistAndFlush()
-        return converter.toGetDTO(updatedCharacter)
+        var character = Character.findById(id) ?: throw NotFoundException()
+        character = converter.merge(character, dto)
+        character.persistAndFlush()
+        return converter.toGetDTO(character)
     }
 }
