@@ -1,14 +1,12 @@
 package com.dndmanager.domain
 
 import io.quarkus.hibernate.orm.panache.kotlin.PanacheCompanion
-import jakarta.persistence.Column
-import jakarta.persistence.Entity
-import jakarta.persistence.Table
+import jakarta.persistence.*
 import java.time.Instant
 
 @Entity
 @Table(name = "sessions")
-data class Session (
+data class Session(
 
     @Column(nullable = false)
     var name: String,
@@ -16,7 +14,11 @@ data class Session (
     @Column(nullable = false)
     var start: Instant,
 
-    var lastUpdated: Instant?
+    var lastUpdated: Instant?,
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn
+    var characters: List<SessionsCharacter>
 ) : BaseEntity() {
 
     companion object : PanacheCompanion<Session>
