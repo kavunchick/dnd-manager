@@ -1,3 +1,4 @@
+-- D&D 5e default rules --
 -- Classes
 INSERT INTO classes (id, name, hitpointdie) VALUES (1, 'Barbarian', 12);
 INSERT INTO classes (id, name, hitpointdie) VALUES (2, 'Bard', 8);
@@ -11,17 +12,6 @@ INSERT INTO classes (id, name, hitpointdie) VALUES (9, 'Rogue', 8);
 INSERT INTO classes (id, name, hitpointdie) VALUES (10, 'Sorcerer', 6);
 INSERT INTO classes (id, name, hitpointdie) VALUES (11, 'Warlock', 8);
 INSERT INTO classes (id, name, hitpointdie) VALUES (12, 'Wizard', 6);
-
--- Alignment
-INSERT INTO alignment (id, name) VALUES (1, 'Chaotic Evil');
-INSERT INTO alignment (id, name) VALUES (2, 'Chaotic Good');
-INSERT INTO alignment (id, name) VALUES (3, 'Chaotic Neutral');
-INSERT INTO alignment (id, name) VALUES (4, 'Lawful Evil');
-INSERT INTO alignment (id, name) VALUES (5, 'Lawful Good');
-INSERT INTO alignment (id, name) VALUES (6, 'Lawful Neutral');
-INSERT INTO alignment (id, name) VALUES (7, 'Neutral');
-INSERT INTO alignment (id, name) VALUES (8, 'Neutral Evil');
-INSERT INTO alignment (id, name) VALUES (9, 'Neutral Good');
 
 -- Equipment
 INSERT INTO equipment (id, description, name, suggestedpricegp, weight) VALUES (1, '', 'Abacus', 2, 2);
