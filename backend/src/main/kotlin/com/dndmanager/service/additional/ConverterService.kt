@@ -18,7 +18,15 @@ class ConverterService {
     }
 
     fun toEntity(sessionCreatDTO: SessionCreatDTO): Session = sessionCreatDTO.run {
-        Session (name, Instant.now(), null, emptyList())
+        Session(name, Instant.now(), null, emptyList())
+    }
+
+    fun toEntity(equipmentCreateDTO: EquipmentCreateDTO): Equipment = equipmentCreateDTO.run {
+        Equipment(name, description, suggestedPriceGp, weight)
+    }
+
+    fun toEntity(ciCreateDTO: CharacterInventoryCreateDTO) : CharacterInventory = ciCreateDTO.run {
+        CharacterInventory(amount, SessionsCharacter.findById(character)!!, Equipment.findById(equipment)!!)
     }
 
     // toGetDTO
@@ -35,6 +43,14 @@ class ConverterService {
             id ?: 0, name, background, ideals, bonds, flaws, personalityTraits, alignment,
             toFindDTO(characterClass), toFindDTO(race), toFindDTO(abilityBonus)
         )
+    }
+
+    fun toGetDTO(equipment: Equipment): EquipmentGetDTO = equipment.run {
+        EquipmentGetDTO(id ?: 0, name, description ?: "", suggestedPriceGp, weight)
+    }
+
+    fun toGetDTO(ci: CharacterInventory) : CharacterInventoryGetDTO = ci.run {
+        CharacterInventoryGetDTO(id ?: 0, amount, toFindDTO(equipment))
     }
 
     //    toFindDTO
@@ -56,6 +72,12 @@ class ConverterService {
     fun toFindDTO(classEntity: Class): ClassFindDTO =
         classEntity.run { ClassFindDTO(id ?: 0, name) }
 
+    fun toFindDTO(equipment: Equipment): EquipmentFindDTO =
+        equipment.run { EquipmentFindDTO(id ?: 0, name, weight) }
+
+    fun toFindDTO(ci: CharacterInventory) : CharacterInventoryFindDTO =
+        ci.run { CharacterInventoryFindDTO(id ?: 0, amount, toFindDTO(equipment)) }
+
     // merge
     fun merge(ability: Ability, abilityDTO: AbilityUpdateDTO): Ability = ability.run {
         Ability(abilityDTO.name ?: name, abilityDTO.description ?: description)
@@ -73,10 +95,23 @@ class ConverterService {
             characterDto.classId?.let { Class.findById(it)!! } ?: character.characterClass,
             characterDto.raceId?.let { Race.findById(it)!! } ?: character.race,
             characterDto.raceAbilityId?.let { RaceAbilityBonus.findById(it)!! } ?: character.abilityBonus
-            )
+        )
     }
 
     fun merge(session: Session, sessionDto: SessionUpdateDTO): Session = session.run {
-        Session (sessionDto.name, session.start, Instant.now(), characters)
+        Session(sessionDto.name, session.start, Instant.now(), characters)
+    }
+
+    fun merge(equipment: Equipment, equipmentDto: EquipmentUpdateDTO): Equipment = equipment.run {
+        Equipment(
+            equipmentDto.name ?: name,
+            equipmentDto.description ?: description,
+            equipmentDto.suggestedPriceGp ?: suggestedPriceGp,
+            equipmentDto.weight ?: weight
+        )
+    }
+
+    fun merge(ci: CharacterInventory, ciDto: CharacterInventoryUpdateDTO): CharacterInventory = ci.run {
+        CharacterInventory(ciDto.amount, character, equipment)
     }
 }

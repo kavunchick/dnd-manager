@@ -10,8 +10,9 @@ data class CharacterInventory(
     @Column(nullable = false)
     var amount: Int,
 
-    @Column(nullable = false)
-    var characterId: Long,
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(nullable = false)
+    var character: SessionsCharacter,
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(nullable = false)
