@@ -9,14 +9,14 @@ import jakarta.inject.Inject
 import jakarta.ws.rs.GET
 import jakarta.ws.rs.Path
 
-@Path("/session/character/inventory")
+@Path("/session/character")
 class CharacterInventoryController : BaseControllerImp<CharacterInventoryService, CharacterInventoryCreateDTO, CharacterInventoryUpdateDTO, CharacterInventoryGetDTO, CharacterInventoryFindDTO>() {
 
     @Inject override lateinit var service: CharacterInventoryService
 
     @GET
-    @Path("/{id}")
-    fun getPlayerInventory(id: Long) : List<CharacterInventoryFindDTO>{
+    @Path("/{id}/inventory")
+     fun getPlayerInventory(id: Long) : List<CharacterInventoryFindDTO>{
         return service.getAllByCharacter(id)
     }
 }
