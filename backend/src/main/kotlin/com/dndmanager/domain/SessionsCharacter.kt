@@ -15,9 +15,9 @@ data class SessionsCharacter (
     @JoinColumn(name = "character_id", nullable = false)
     var character: Character,
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "inventory_id", nullable = false)
-    var inventory: CharacterInventory,
+    var inventory: List<CharacterInventory>,
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "money_id", nullable = false)

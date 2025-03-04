@@ -15,7 +15,9 @@ import jakarta.ws.rs.NotFoundException
 import jakarta.ws.rs.WebApplicationException
 
 @ApplicationScoped
-class CharacterService(override val converter: ConverterService = ConverterService()) : BaseService<CharacterCreateDTO, CharacterGetDTO, CharacterFindDTO, CharacterUpdateDTO> {
+class CharacterService : BaseService<CharacterCreateDTO, CharacterGetDTO, CharacterFindDTO, CharacterUpdateDTO> {
+
+    override val converter = ConverterService()
 
     override fun getById(id: Long): CharacterGetDTO {
         val character = Character.findById(id) ?: throw NotFoundException()

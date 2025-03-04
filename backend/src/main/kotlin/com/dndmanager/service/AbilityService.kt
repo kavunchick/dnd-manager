@@ -11,8 +11,10 @@ import jakarta.transaction.Transactional
 import jakarta.ws.rs.NotFoundException
 
 @ApplicationScoped
-class AbilityService(override val converter: ConverterService = ConverterService()) :
+class AbilityService :
     BaseService<AbilityCreateDTO, AbilityGetDTO, AbilityFindDTO, AbilityUpdateDTO> {
+
+    override val converter = ConverterService()
 
     @Transactional
     override fun create(dto: AbilityCreateDTO): AbilityGetDTO {
