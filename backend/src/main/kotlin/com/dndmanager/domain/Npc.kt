@@ -34,7 +34,7 @@ data class Npc (
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "location_id")
-    var location: Location? = null
+    var location: Location?
 ) : BaseEntity() {
 
     companion object : PanacheCompanion<Npc>
